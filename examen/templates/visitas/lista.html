@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>Examen</title>
+    </head>
+    <body>
+
+        <h2>Actividades: {{ actividad.nombre }}</h2>
+
+        {% for visita in visitas %}
+            <div>
+                <h2>Id_Tarea: {{visita.id}}</h2>
+                <h2>Título: {{visita.titulo}}</h2>
+                <h2>Descripcion: {{visita.descripcion}}</h2>
+                <h2>Prioridad: {{visita.prioridad}}</h2>
+                <h2>Estado: {{visita.get_estado_display}}</h2>
+                <h2>Completada: {{visita.get_completada_display}}</h2>
+                <h2>Fecha Creacion: {{visita.fecha_creacion}}</h2>
+                <h2>Hora vencimiento: {{visita.hora_vencimiento}}</h2>
+                
+                <h2>Creador: {{visita.creador.nombre}}</h2>
+
+                <h2>Guias Asignados</h2>
+                <ul>
+                    {% for guia in visita.guias_asignados.all%}
+                        <li>Guia: {{guia.nombre}}</li>
+                    {%endfor%}
+                </ul>
+
+                <h2>Etiquetas</h2>
+                <ul>
+                    {% for etiqueta in visita.etiquetas_.all%}
+                        <li>Etiqueta: {{etiqueta.nombre}}</li>
+                    {%endfor%}
+                </ul>
+
+                <h2>Comentarios</h2>
+                {% for comentario in visita.comentarios_visita.all%}
+                <div>
+                    <ul>
+                        <li>Autor: {{comentario.autor.nombre}} </li>
+                        <li>Comentario: {{comentario.contenido}}</li>
+                    </ul>
+                <div>
+                {%endfor%}
+            <hr></hr>    
+            </div>
+        
+        {% endfor %}
+
+    </body>
+
+
+</html>

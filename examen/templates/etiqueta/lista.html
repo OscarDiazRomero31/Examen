@@ -1,0 +1,28 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>EXAMEN</title>
+    </head>
+    <body>
+
+        <h1>Actividad: {{ actividad.nombre }}</h2>
+
+        <h1>Etiquetas</h1>
+        {% for etiqueta in etiquetas %}
+            <div>
+                <h2>ID etiqueta: {{etiqueta.id}}</h2>
+                <h2>Nombre: {{etiqueta.nombre}}</h2>
+                <h2>Visitas Asociadas</h2>
+                <ul>
+                {% for visita in etiqueta.visita.all %}
+                    <li>Visita: {{visita.titulo}}</li>
+                {% endfor %}
+                </ul>
+            </div>     
+            <hr></hr>    
+        {% endfor %}
+
+    </body>
+
+
+</html>
